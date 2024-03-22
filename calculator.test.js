@@ -1,44 +1,245 @@
 import { expect, test } from '@jest/globals';
 import { calculator } from './calculator';
 
-// Add test
-test('add - happy trail 1', () => {
-  expect(calculator.add(5, 7)).toBe(12);
-});
+const tests = [
+  {
+    operation: 'add',
+    separator: ' - ',
+    caseName: 'happy trail 1',
+    operatorOne: 5,
+    operatorTwo: 7,
+    result: 12
+  },
+  {
+    operation: 'add',
+    separator: ' - ',
+    caseName: 'happy trail 2',
+    operatorOne: 15,
+    operatorTwo: 1000,
+    result: 1015
+  },
+  {
+    operation: 'add',
+    separator: ' - ',
+    caseName: 'NaN 1',
+    operatorOne: 'N',
+    operatorTwo: 3,
+    result: Error
+  },
+  {
+    operation: 'add',
+    separator: ' - ',
+    caseName: 'NaN 2',
+    operatorOne: 3,
+    operatorTwo: 'N',
+    result: Error
+  },
+  {
+    operation: 'add',
+    separator: ' - ',
+    caseName: 'lack argument',
+    operatorOne: 'N',
+    operatorTwo: undefined,
+    result: Error('Argument is missing!')
+  },
+  {
+    operation: 'add',
+    separator: ' - ',
+    caseName: 'using zero',
+    operatorOne: 3,
+    operatorTwo: 0,
+    result: 3
+  },
+  {
+    operation: 'add',
+    separator: ' - ',
+    caseName: 'using null',
+    operatorOne: 0,
+    operatorTwo: null,
+    result: Error
+  },
+  {
+    operation: 'substract',
+    separator: ' - ',
+    caseName: 'happy trail 1',
+    operatorOne: 7,
+    operatorTwo: 5,
+    result: 2
+  },
+  {
+    operation: 'substract',
+    separator: ' - ',
+    caseName: 'happy trail 2',
+    operatorOne: 15,
+    operatorTwo: 30,
+    result: -15
+  },
+  {
+    operation: 'substract',
+    separator: ' - ',
+    caseName: 'Nan 1',
+    operatorOne: 'n',
+    operatorTwo: 200,
+    result: Error
+  },
+  {
+    operation: 'substract',
+    separator: ' - ',
+    caseName: 'Nan 2',
+    operatorOne: 200,
+    operatorTwo: 'n',
+    result: Error
+  },
+  {
+    operation: 'substract',
+    separator: ' - ',
+    caseName: 'lack argument',
+    operatorOne: 'N',
+    operatorTwo: undefined,
+    result: Error('Argument is missing!')
+  },
+  {
+    operation: 'substract',
+    separator: ' - ',
+    caseName: 'using zero',
+    operatorOne: 3,
+    operatorTwo: 0,
+    result: 3
+  },
+  {
+    operation: 'substract',
+    separator: ' - ',
+    caseName: 'using null',
+    operatorOne: null,
+    operatorTwo: 15,
+    result: Error
+  },
+  {
+    operation: 'divide',
+    separator: ' - ',
+    caseName: 'happy trail 1',
+    operatorOne: 10,
+    operatorTwo: 5,
+    result: 2
+  },
+  {
+    operation: 'divide',
+    separator: ' - ',
+    caseName: 'happy trail 2',
+    operatorOne: 20,
+    operatorTwo: 5,
+    result: 4
+  },
+  {
+    operation: 'divide',
+    separator: ' - ',
+    caseName: 'Nan 1',
+    operatorOne: 'n',
+    operatorTwo: 20,
+    result: Error
+  },
+  {
+    operation: 'divide',
+    separator: ' - ',
+    caseName: 'Nan 2',
+    operatorOne: 200,
+    operatorTwo: 'n',
+    result: Error
+  },
+  {
+    operation: 'divide',
+    separator: ' - ',
+    caseName: 'lack argument',
+    operatorOne: 'N',
+    operatorTwo: undefined,
+    result: Error('Argument is missing!')
+  },
+  {
+    operation: 'divide',
+    separator: ' - ',
+    caseName: 'using zero',
+    operatorOne: 0,
+    operatorTwo: 3,
+    result: 0
+  },
+  {
+    operation: 'divide',
+    separator: ' - ',
+    caseName: 'by zero',
+    operatorOne: 3,
+    operatorTwo: 0,
+    result: Error('Cannot divide by Zero!')
+  },
+  {
+    operation: 'divide',
+    separator: ' - ',
+    caseName: 'using null',
+    operatorOne: null,
+    operatorTwo: 15,
+    result: Error
+  },
+  {
+    operation: 'multiply',
+    separator: ' - ',
+    caseName: 'happy trail 1',
+    operatorOne: 7,
+    operatorTwo: 5,
+    result: 35
+  },
+  {
+    operation: 'multiply',
+    separator: ' - ',
+    caseName: 'happy trail 2',
+    operatorOne: 2,
+    operatorTwo: -30,
+    result: -60
+  },
+  {
+    operation: 'multiply',
+    separator: ' - ',
+    caseName: 'Nan 1',
+    operatorOne: 'n',
+    operatorTwo: 20,
+    result: Error
+  },
+  {
+    operation: 'multiply',
+    separator: ' - ',
+    caseName: 'Nan 2',
+    operatorOne: 200,
+    operatorTwo: 'n',
+    result: Error
+  },
+  {
+    operation: 'multiply',
+    separator: ' - ',
+    caseName: 'lack argument',
+    operatorOne: 'N',
+    operatorTwo: undefined,
+    result: Error('Argument is missing!')
+  },
+  {
+    operation: 'multiply',
+    separator: ' - ',
+    caseName: 'using zero',
+    operatorOne: 3,
+    operatorTwo: 0,
+    result: 0
+  },
+  {
+    operation: 'multiply',
+    separator: ' - ',
+    caseName: 'using null',
+    operatorOne: null,
+    operatorTwo: 15,
+    result: Error
+  }
+];
 
-test('add - happy trail 2', () => {
-  expect(calculator.add(15, 1000)).toBe(1015);
-});
-
-test('add - NaN 1', () => {
-  expect(() => calculator.add('N', 3)).toThrowError();
-});
-
-test('add - NaN 2', () => {
-  expect(() => calculator.add(3, 'N')).toThrowError();
-});
-
-test('add - lack argument', () => {
-  expect(() => calculator.add('N')).toThrowError('Argument is missing!');
-});
-
-test('add - using zero', () => {
-  expect(calculator.add(3, 0)).toBe(3);
-});
-
-test('add - using null', () => {
-  expect(() => calculator.add(0, null)).toThrowError();
-});
-
-// Substract test
-test('substract - happy trail 1', () => {
-  expect(calculator.substract(7, 5)).toBe(2);
-});
-
-test('substract - happy trail 2', () => {
-  expect(calculator.substract(15, 30)).toBe(-15);
-});
-
-test('substract - NaN', () => {
-  expect(() => calculator.substract('n', 20)).toThrowError();
+tests.forEach((e) => {
+  test(e.operation + e.separator + e.caseName, () => {
+    typeof e.result === 'number'
+      ? expect(calculator[e.operation](e.operatorOne, e.operatorTwo)).toBe(e.result)
+      : expect(() => calculator[e.operation](e.operatorOne, e.operatorTwo)).toThrowError(e.result);
+  });
 });
