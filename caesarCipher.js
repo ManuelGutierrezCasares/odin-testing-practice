@@ -1,4 +1,10 @@
 export const caesarCipher = (string, shifter) => {
+  if (!string || !shifter) {
+    throw new Error('Missing arguments!');
+  } else if (typeof string !== 'string' || typeof shifter !== 'number') {
+    throw new Error('Wrong type of input!');
+  }
+
   let shiftedString = '';
 
   while (shifter > 26) {

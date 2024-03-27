@@ -5,7 +5,7 @@ const tests = [
   {
     operation: 'add',
     separator: ' - ',
-    caseName: 'happy trail 1',
+    caseName: 'happy path 1',
     operatorOne: 5,
     operatorTwo: 7,
     result: 12
@@ -13,7 +13,7 @@ const tests = [
   {
     operation: 'add',
     separator: ' - ',
-    caseName: 'happy trail 2',
+    caseName: 'happy path 2',
     operatorOne: 15,
     operatorTwo: 1000,
     result: 1015
@@ -61,7 +61,7 @@ const tests = [
   {
     operation: 'substract',
     separator: ' - ',
-    caseName: 'happy trail 1',
+    caseName: 'happy path 1',
     operatorOne: 7,
     operatorTwo: 5,
     result: 2
@@ -69,7 +69,7 @@ const tests = [
   {
     operation: 'substract',
     separator: ' - ',
-    caseName: 'happy trail 2',
+    caseName: 'happy path 2',
     operatorOne: 15,
     operatorTwo: 30,
     result: -15
@@ -117,7 +117,7 @@ const tests = [
   {
     operation: 'divide',
     separator: ' - ',
-    caseName: 'happy trail 1',
+    caseName: 'happy path 1',
     operatorOne: 10,
     operatorTwo: 5,
     result: 2
@@ -125,7 +125,7 @@ const tests = [
   {
     operation: 'divide',
     separator: ' - ',
-    caseName: 'happy trail 2',
+    caseName: 'happy path 2',
     operatorOne: 20,
     operatorTwo: 5,
     result: 4
@@ -181,7 +181,7 @@ const tests = [
   {
     operation: 'multiply',
     separator: ' - ',
-    caseName: 'happy trail 1',
+    caseName: 'happy path 1',
     operatorOne: 7,
     operatorTwo: 5,
     result: 35
@@ -189,7 +189,7 @@ const tests = [
   {
     operation: 'multiply',
     separator: ' - ',
-    caseName: 'happy trail 2',
+    caseName: 'happy path 2',
     operatorOne: 2,
     operatorTwo: -30,
     result: -60
